@@ -1,0 +1,3 @@
+createsuperuser
+demo
+1234

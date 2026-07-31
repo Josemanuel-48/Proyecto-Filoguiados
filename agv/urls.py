@@ -1,0 +1,13 @@
+# se crea el archivo urls.py que contiene las rutas de la aplicación agv.
+
+from django.contrib.auth import views as auth_views
+from django.urls import path
+from . import views
+# se define el nombre de la aplicación para poder referenciar las rutas desde otras aplicaciones.
+app_name = 'agv'
+# se definen las rutas de la aplicación agv, que corresponden a las vistas que se van a mostrar en la interfaz web.
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('login/', auth_views.LoginView.as_view(template_name='agv/login.html'), name='login'),
+
+]
