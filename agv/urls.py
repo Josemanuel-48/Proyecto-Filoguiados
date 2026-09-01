@@ -9,5 +9,7 @@ app_name = 'agv'
 urlpatterns = [
     path('', views.home, name='home'),
     path('login/', auth_views.LoginView.as_view(template_name='agv/login.html'), name='login'),
+    # se añade la ruta de logout para poder cerrar sesión desde la interfaz web.
+    path('logout/', auth_views.LogoutView.as_view(), name='logout')
 
 ]

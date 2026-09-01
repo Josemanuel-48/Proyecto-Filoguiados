@@ -27,6 +27,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# se crea la ruta de redireccionamiento después del login
+LOGIN_REDIRECT_URL = 'agv:home'
+# se crea la ruta de redireccionamiento después del logout
+LOGOUT_REDIRECT_URL = 'agv:login'
 
 # Application definition
 
