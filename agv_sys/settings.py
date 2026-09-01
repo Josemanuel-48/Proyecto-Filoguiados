@@ -31,6 +31,8 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL = 'agv:home'
 # se crea la ruta de redireccionamiento después del logout
 LOGOUT_REDIRECT_URL = 'agv:login'
+# se crea la ruta de redireccionamiento para las vistas que requieren autenticación
+LOGIN_URL = 'agv:login'
 
 # Application definition
 
