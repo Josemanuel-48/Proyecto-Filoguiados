@@ -2,28 +2,37 @@
 {% extends 'agv/base.html' %}
 {% block content %}
 
-<h1>Dashboard</h1>
-<p>Bienvenido al panel de control de la aplicación AGV.</p>
+<h1>Panel de Control</h1>
+<p class="new">Monitorizacion AGV.</p>
 
-{# Se muestran las estadísticas de paradas registradas hoy y la duración media de las paradas #}
-<p>Paradas registradas hoy: {{ paradas_hoy }}</p>
-<p>Duración media: {{ duracion_media }}</p>
+<div class="resumen">
+    {# Se muestran las estadísticas de paradas registradas hoy y la duración media de las paradas #}
+    <div class="tarjeta">
+        <p>Paradas registradas hoy: {{ paradas_hoy }}</p>
+    </div>
+    <div class="tarjeta">
+        <p>Duración media: {{ duracion_media }}</p>
+    </div>
+</div>
+
 
 {# Se muestra el segmento crítico si existe #}
 {% if segmento_critico %}
-    <p>Segmento crítico: {{ segmento_critico.sensor }} con {{ segmento_critico.total }} paradas.</p>
+<p class="alerta">Segmento crítico: {{ segmento_critico.sensor }} con {{ segmento_critico.total }} paradas.</p>
 {% else %}
-    <p>No hay segmentos críticos hoy.</p>
+<p>No hay segmentos críticos hoy.</p>
 {% endif %}
 
 {# Tabla de las últimas 10 paradas registradas #}
 <table>
     <thead>
         <tr>
+
             <th>Carro</th>
             <th>Sensor</th>
             <th>Duración</th>
             <th>Hora</th>
+
         </tr>
     </thead>
     <tbody>
