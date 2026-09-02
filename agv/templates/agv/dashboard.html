@@ -1,6 +1,41 @@
+{# se extiende la plantilla base.html para heredar su estructura y estilos #}
 {% extends 'agv/base.html' %}
 {% block content %}
 
 <h1>Dashboard</h1>
 <p>Bienvenido al panel de control de la aplicación AGV.</p>
+
+{# Se muestran las estadísticas de paradas registradas hoy y la duración media de las paradas #}
+<p>Paradas registradas hoy: {{ paradas_hoy }}</p>
+<p>Duración media: {{ duracion_media }}</p>
+
+{# Se muestra el segmento crítico si existe #}
+{% if segmento_critico %}
+    <p>Segmento crítico: {{ segmento_critico.sensor }} con {{ segmento_critico.total }} paradas.</p>
+{% else %}
+    <p>No hay segmentos críticos hoy.</p>
+{% endif %}
+
+{# Tabla de las últimas 10 paradas registradas #}
+<table>
+    <thead>
+        <tr>
+            <th>Carro</th>
+            <th>Sensor</th>
+            <th>Duración</th>
+            <th>Hora</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for parada in ultimas_paradas %}
+        <tr>
+            <td>{{ parada.id_carro }}</td>
+            <td>{{ parada.sensor }}</td>
+            <td>{{ parada.duracion }}</td>
+            <td>{{ parada.hora }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 {% endblock %}
