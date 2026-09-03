@@ -1,0 +1,26 @@
+{# se crea una plantilla para mostrar el histórico de paradas registradas en la base de datos, mostrando el sensor, el número total de paradas y la duración media de las paradas para cada sensor. #}
+{% extends 'agv/base.html' %}
+{% block content %}
+
+{# se crea una plantilla para mostrar el histórico de paradas registradas en la base de datos, mostrando el sensor, el número total de paradas y la duración media de las paradas para cada sensor. #}
+<h1>Histórico de Paradas</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Sensor</th>
+            <th>Total de Paradas</th>
+            <th>Duración Media</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for parada in historico_paradas %}
+        <tr>
+            <td>{{ parada.sensor }}</td>
+            <td>{{ parada.total }}</td>
+            <td>{{ parada.duracion_media|floatformat:2 }} segundos</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -12,6 +12,8 @@ urlpatterns = [
     # se añade la ruta de logout para poder cerrar sesión desde la interfaz web.
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     # se añade la ruta de dashboard para poder acceder a la vista dashboard desde la interfaz web.
-    path('dashboard/', views.dashboard, name='dashboard')
+    path('dashboard/', views.dashboard, name='dashboard'),
+    # se añade la ruta de historico para poder acceder a la vista historico desde la interfaz web.  
+    path('historico/', views.historico, name='historico'),
 
 ]

@@ -4,10 +4,6 @@
 
     <h1>Bienvenido a la aplicación AGV</h1>
     <p>Esta es la página de inicio de la aplicación AGV.</p>
-    {# se crea un formulario de cierre de sesión que utiliza el método POST para enviar los datos al servidor. #}
-    <form method="post" action="{% url 'agv:logout' %}">
-        {% csrf_token %}
-        <button type="submit">Cerrar Sesión</button>
-    </form>
+   
     {% endblock %}
 

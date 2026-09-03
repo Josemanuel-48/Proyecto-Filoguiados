@@ -1,3 +1,6 @@
+/* este es el archivo de estilo CSS para la aplicación AGV */
+/* donde se ha creado varias clases en los archivos html para poder aplicar estilos a los elementos de la página web */
+
 :root {
     --color-fondo: #1b3552;
     --color-texto:  #ffffff;
@@ -16,9 +19,8 @@ body {
 h1 {
     color: #ffffff;
     text-align: center;
-    
-    
 }
+
 button {
     background-color: var(--color-acento);
     color: var(--color-texto);
@@ -51,7 +53,20 @@ button:hover {
     border-radius: 10px;
     box-shadow: 1px 4px 20px rgba(0, 0, 0, 0.5);
     text-align: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
    
+}
+
+input {
+    padding: 5px 10px;
+    border-radius: 5px 2px ;
 }
 
 table {
@@ -94,4 +109,21 @@ tr:nth-child(even) {
 }
 .title {
     color: black;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+nav a {
+    color: var(--color-texto);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }

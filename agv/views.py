@@ -30,3 +30,7 @@ def dashboard(request):
     # se crea un diccionario con las variables paradas_hoy y duracion_media para pasarlas a la plantilla dashboard.html, añadiendo también el segmento crítico si existe y las últimas paradas registradas.
     return render(request, 'agv/dashboard.html', {'paradas_hoy': paradas_hoy, 'duracion_media': duracion_media, 'segmento_critico': segmento_critico, 'ultimas_paradas': ultimas_paradas})
 
+@login_required
+def historico(request):
+    historico_paradas = RegistroParada.objects.values('sensor').annotate(total=Count('sensor'), duracion_media=Avg('duracion')).order_by('-total')
+    return render(request, 'agv/historico.html', {'historico_paradas': historico_paradas})

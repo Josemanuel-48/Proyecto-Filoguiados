@@ -16,3 +16,6 @@ __pycache__/
 .DS_Store
 .vscode/
 .ipynb_checkpoints/
+
+# documento .md
+*.md

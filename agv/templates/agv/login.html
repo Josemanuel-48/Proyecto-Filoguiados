@@ -1,16 +1,18 @@
-
+<h1 class="text">Tienes Que Loguearte Para Continuar</h1>
 {# este es el archivo de plantilla para la página de inicio de sesión #}
 {% extends 'agv/base.html' %}
 {% block content %}
+
 {# se crea un formulario de inicio de sesión que utiliza el método POST para enviar los datos al servidor. #}
 <form method="post">
-    
     {% csrf_token %}
     {{ form.non_field_errors }}
-{# se muestran los errores de validación del formulario, si los hay. #}
-{{ form.username.label_tag }} {{ form.username }}
-{{ form.password.label_tag }} {{ form.password }}
-{# se crea un botón de envío para que el usuario pueda enviar sus credenciales de inicio de sesión. #}
+
+    {# se muestran los errores de validación del formulario, si los hay. #}
+    {{ form.username.label_tag }} {{ form.username }}
+    {{ form.password.label_tag }} {{ form.password }}
+
+    {# se crea un botón de envío para que el usuario pueda enviar sus credenciales de inicio de sesión. #}
     <button type="submit">Iniciar sesión</button>
 </form>
 
