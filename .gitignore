@@ -17,5 +17,3 @@ __pycache__/
 .vscode/
 .ipynb_checkpoints/
 
-# documento .md
-*.md
