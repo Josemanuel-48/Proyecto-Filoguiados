@@ -1,8 +1,9 @@
 # se importa la clase BaseCommand de django.core.management.base para crear un comando personalizado de Django. 
 from django.core.management.base import BaseCommand
-import time # se importa 
+import time 
 import random
 from django.utils import timezone
+from agv.models import RegistroParada
 
 # se crea la clase AGV, para representar un vehículo guiado automáticamente (AGV) con atributos como id_carro, posicion_actual y direccion.
 class AGV:
@@ -13,7 +14,7 @@ class AGV:
         self.direccion = direccion
     # se crea el método avanzar que actualiza la posición del AGV según la dirección y los sensores.
     def avanzar(self):
-        # se cre un if para determinar la lista de sensores actual según la dirección del AGV.
+        # se crea un if para determinar la lista de sensores actual según la dirección del AGV.
         if self.direccion == "ida":
             lista_actual = sensores_ida
 
@@ -33,18 +34,36 @@ class AGV:
             else:
                 self.posicion_actual = sensores_vuelta[0]
 
-         
-        
-
-    
 # se crean variables listas que contienen los identificadores de los sensores para la ida y la vuelta del recorrido del AGV.
 sensores_ida = ["segmento_1", "segmento_2", "segmento_3", "segmento_4", "segmento_5"]
 sensores_vuelta = ["segmento_6", "segmento_7", "segmento_8", "segmento_9", "segmento_10"]
 # La clase Command hereda de BaseCommand y define el método handle, que se ejecuta cuando se llama al comando. 
 class Command(BaseCommand):
+    # se define el método handle que se ejecuta cuando se llama al comando. Aquí se crean los AGV y se simula su movimiento.
     def handle(self, *args, **kwargs):
         carro_1 = AGV("Carro_1", "segmento_1", "ida")
         carro_2 = AGV("Carro_2", "segmento_1", "ida")
         carro_3 = AGV("Carro_3", "segmento_1", "ida")
-        print("Simulacion iniciada")
+
+        # se crea variable que contiene la lista de carros.
+        carros = [carro_1, carro_2, carro_3]
+        # se inicia un bucle infinito para simular el movimiento continuo de los AGV.
+        while True:
+            for carro in carros:
+                # se decide aleatoriamente si el AGV se detiene en esta iteración
+                if random.random() < 0.3: 
+                    # se genera una duración aleatoria para la parada del AGV.
+                    duracion = random.randint(1, 40)  
+                    # se registra la parada del AGV en la base de datos.
+                    RegistroParada.objects.create(
+                        # se asigna el identificador del carro que se detuvo.
+                        id_carro=carro.id_carro,
+                        sensor=carro.posicion_actual,
+                        duracion=duracion,
+                        hora=timezone.now(),
+                        )
+                carro.avanzar()
+                print(f"{carro.id_carro} está en {carro.posicion_actual} se dirige de {carro.direccion}")
+                time.sleep(2)  # se agrega una pausa de 2 segundos entre cada iteración del bucle para simular el tiempo de movimiento del AGV.
+                
 
