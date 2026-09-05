@@ -37,9 +37,9 @@ class AGV:
 # se crean variables listas que contienen los identificadores de los sensores para la ida y la vuelta del recorrido del AGV.
 sensores_ida = ["segmento_1", "segmento_2", "segmento_3", "segmento_4", "segmento_5"]
 sensores_vuelta = ["segmento_6", "segmento_7", "segmento_8", "segmento_9", "segmento_10"]
-# La clase Command hereda de BaseCommand y define el método handle, que se ejecuta cuando se llama al comando. 
+# La clase hereda de BaseCommand y define el método handle, que se ejecuta cuando se llama al comando. 
 class Command(BaseCommand):
-    # se define el método handle que se ejecuta cuando se llama al comando. Aquí se crean los AGV y se simula su movimiento.
+    
     def handle(self, *args, **kwargs):
         carro_1 = AGV("Carro_1", "segmento_1", "ida")
         carro_2 = AGV("Carro_2", "segmento_1", "ida")
