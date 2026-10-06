@@ -39,7 +39,7 @@ La aplicación queda disponible en `http://127.0.0.1:8000/`.
 Para probar la aplicación sin crear un usuario propio:
 
 - **Usuario:** demo
-- **Contraseña:** 012124striper
+- **Contraseña:** 12124josem1
 
 ## Comandos propios del proyecto
 
